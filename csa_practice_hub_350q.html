@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>CSA Practice Hub - Full 350 Questions</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>
+:root{
+  --bg1:#4f46e5;--bg2:#06b6d4;--bg3:#ec4899;
+  --glass:rgba(255,255,255,.24);--glass-card:rgba(255,255,255,.32);
+  --bd:rgba(255,255,255,.45);--tx:#0f172a;--mu:#334155;
+  --ok:#15803d;--ok-bg:rgba(34,197,94,.28);
+  --no:#b91c1c;--no-bg:rgba(239,68,68,.28);
+  --ac:#4338ca;--ac-hover:#3730a3;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)
+}
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme=light]){
+    --bg1:#1e1b4b;--bg2:#083344;--bg3:#500724;
+    --glass:rgba(15,23,42,.65);--glass-card:rgba(30,41,59,.72);
+    --bd:rgba(255,255,255,.14);--tx:#f8fafc;--mu:#94a3b8;
+    --ok:#22c55e;--ok-bg:rgba(34,197,94,.22);
+    --no:#ef4444;--no-bg:rgba(239,68,68,.22);
+    --ac:#818cf8;--ac-hover:#6366f1
+  }
+}
+:root[data-theme=dark]{
+  --bg1:#1e1b4b;--bg2:#083344;--bg3:#500724;
+  --glass:rgba(15,23,42,.65);--glass-card:rgba(30,41,59,.72);
+  --bd:rgba(255,255,255,.14);--tx:#f8fafc;--mu:#94a3b8;
+  --ok:#22c55e;--ok-bg:rgba(34,197,94,.22);
+  --no:#ef4444;--no-bg:rgba(239,68,68,.22);
+  --ac:#818cf8;--ac-hover:#6366f1
+}
+:root[data-theme=light]{
+  --bg1:#4f46e5;--bg2:#06b6d4;--bg3:#ec4899;
+  --glass:rgba(255,255,255,.24);--glass-card:rgba(255,255,255,.32);
+  --bd:rgba(255,255,255,.45);--tx:#0f172a;--mu:#334155;
+  --ok:#15803d;--ok-bg:rgba(34,197,94,.28);
+  --no:#b91c1c;--no-bg:rgba(239,68,68,.28);
+  --ac:#4338ca;--ac-hover:#3730a3
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{
+  margin:0;min-height:100vh;
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  color:var(--tx);
+  background:linear-gradient(135deg,var(--bg1),var(--bg2) 55%,var(--bg3));
+  background-attachment:fixed;
+  display:flex;justify-content:center;
+  padding:24px 14px
+}
+.blob{position:fixed;border-radius:50%;filter:blur(80px);opacity:.42;z-index:0;pointer-events:none}
+.b1{width:380px;height:380px;background:#ffffff;top:-90px;left:-80px;opacity:.2}
+.b2{width:420px;height:420px;background:var(--bg3);bottom:-130px;right:-90px}
+main{position:relative;z-index:1;width:100%;max-width:820px}
+.glass{
+  background:var(--glass);
+  border:1px solid var(--bd);
+  border-radius:24px;
+  backdrop-filter:blur(24px) saturate(170%);
+  -webkit-backdrop-filter:blur(24px) saturate(170%);
+  box-shadow:0 16px 44px rgba(0,0,0,.22);
+  padding:26px;margin-bottom:18px
+}
+h1{margin:0 0 6px;font-size:1.85rem;letter-spacing:-0.02em}
+h2{font-size:1.25rem;margin:0 0 16px;line-height:1.45;font-weight:600}
+p{color:var(--mu);margin:6px 0 16px;line-height:1.5}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 18px}
+.chip,.btn,.opt,select{
+  font:inherit;color:var(--tx);cursor:pointer;
+  border:1px solid var(--bd);background:var(--glass-card);
+  backdrop-filter:blur(10px);transition:all .18s cubic-bezier(0.4, 0, 0.2, 1)
+}
+.chip{padding:7px 15px;border-radius:99px;font-size:.85rem;user-select:none}
+.chip.on{background:var(--ac);color:#fff;border-color:transparent;box-shadow:0 4px 14px rgba(67,56,202,.35)}
+.btn{padding:12px 22px;border-radius:14px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.btn.pri{background:var(--ac);color:#fff;border-color:transparent}
+.btn.pri:hover{background:var(--ac-hover);transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.2)}
+.btn:hover,.opt:hover:not(:disabled){transform:translateY(-2px)}
+.btn.sec{background:transparent;border:1px solid var(--bd)}
+select.picker{padding:11px 16px;border-radius:14px;font-weight:600;outline:none}
+.opt{
+  display:block;width:100%;text-align:left;
+  padding:15px 18px;border-radius:14px;margin-bottom:11px;
+  line-height:1.4;font-size:.95rem;position:relative
+}
+.opt:disabled{cursor:default;opacity:.95}
+.opt.ok{background:var(--ok-bg)!important;border-color:var(--ok)!important;font-weight:600}
+.opt.no{background:var(--no-bg)!important;border-color:var(--no)!important}
+.bar{height:9px;border-radius:10px;background:rgba(255,255,255,.2);overflow:hidden;margin-bottom:20px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--ac),#38bdf8);transition:width .35s ease}
+.meta{display:flex;justify-content:space-between;font-size:.85rem;font-weight:600;color:var(--mu);margin-bottom:10px;letter-spacing:0.02em;text-transform:uppercase}
+.exp{
+  margin-top:16px;padding:15px 18px;border-radius:14px;
+  background:rgba(255,255,255,.16);border:1px solid var(--bd);
+  font-size:.92rem;line-height:1.55;animation:fadeIn .25s ease-in-out
+}
+@keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+.score{font-size:3.5rem;font-weight:900;margin:10px 0;letter-spacing:-0.03em}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+textarea{width:100%;min-height:95px;border-radius:14px;border:1px solid var(--bd);background:var(--glass-card);color:var(--tx);padding:12px;font:12px monospace}
+.top{display:flex;justify-content:space-between;align-items:center}
+.badge{padding:4px 10px;border-radius:99px;font-size:.78rem;font-weight:700;background:rgba(255,255,255,.22)}
+.stat-pill{background:var(--glass-card);border:1px solid var(--bd);padding:6px 12px;border-radius:10px;font-size:.85rem;font-weight:600}
+.hide{display:none!important}
+details summary{cursor:pointer;color:var(--tx);font-weight:600;padding:4px 0}
+.filter-controls{display:flex;gap:8px;margin-bottom:8px}
+.pill-btn{font-size:.75rem;padding:4px 10px;border-radius:6px;border:1px solid var(--bd);background:transparent;color:var(--tx);cursor:pointer}
+.breakdown-row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:.88rem}
+</style>
+</head>
+<body>
+<div class="blob b1"></div><div class="blob b2"></div>
+<main>
+<div class="glass" id="home">
+ <div class="top">
+   <div>
+     <h1>CSA Practice Hub</h1>
+     <div style="font-size:.85rem;color:var(--mu);font-weight:600">Full ServiceNow Certified System Administrator Question Bank</div>
+   </div>
+   <button class="chip" id="th" title="Toggle Theme">🌓 Theme</button>
+ </div>
+ 
+ <div class="row" style="margin:14px 0 10px">
+   <div class="stat-pill">📚 Total Bank: <span id="total-stat" style="color:var(--ac);font-weight:800">350</span> Questions</div>
+   <div class="stat-pill">🎯 Selected: <span id="sel-stat" style="font-weight:800">350</span></div>
+ </div>
+
+ <p>Select topics to filter or practice the entire comprehensive question bank. Choose full exam simulation or customize question batch size below.</p>
+ 
+ <div class="filter-controls">
+   <button class="pill-btn" id="sel-all">Select All Topics</button>
+   <button class="pill-btn" id="desel-all">Clear All Topics</button>
+ </div>
+ <div class="chips" id="chips"></div>
+
+ <div style="background:rgba(255,255,255,.12);padding:14px 16px;border-radius:16px;border:1px solid var(--bd);margin:14px 0">
+   <div style="font-size:.85rem;font-weight:700;margin-bottom:8px;text-transform:uppercase;color:var(--mu)">Quiz Configuration</div>
+   <div class="row">
+     <button class="btn pri" id="go-all">🚀 Start Full Quiz (All Selected)</button>
+     <div style="display:inline-flex;align-items:center;gap:6px">
+       <select class="picker" id="limit-picker">
+         <option value="all">Practice All Selected</option>
+         <option value="25">Batch of 25</option>
+         <option value="50">Batch of 50</option>
+         <option value="100">Batch of 100</option>
+       </select>
+       <button class="btn sec" id="go-custom">Start Batch</button>
+     </div>
+   </div>
+ </div>
+</div>
+
+<div class="glass hide" id="quiz"></div>
+<div class="glass hide" id="res"></div>
+
+<div class="glass" id="imp">
+  <details>
+    <summary>➕ Custom JSON Question Importer</summary>
+    <p style="font-size:.85rem;margin-top:8px">Format: [["Topic","Question?",["Correct","Wrong1","Wrong2","Wrong3"],"Explanation"],...] First option is always correct and randomized during test.</p>
+    <textarea id="ta" placeholder='[["Platform","Sample Question?",["Correct answer","Wrong 1","Wrong 2","Wrong 3"],"Explanation"]]'></textarea>
+    <div class="row" style="margin-top:10px">
+      <button class="btn" id="add">Append Questions</button>
+      <span id="msg" style="color:var(--mu);font-size:.85rem"></span>
+    </div>
+  </details>
+</div>
+</main>
+
+<script>
+// EXACT 350 UNIQUE QUESTIONS - CSA CURATED & VERIFIED
+const Q = [
+/* 1 */ ["Platform","What does the Filter Navigator do?",["Searches application menus and modules","Filters records in a list","Filters inbound email","Filters ACL rules"],"Type in the filter box to quickly find applications and modules in the navigator."],
+/* 2 */ ["Platform","What is a scoped application?",["An app with its own namespace, isolated from other apps","An app visible only to admins","An app that runs only on mobile","A plugin from the Store only"],"Scoped apps protect their resources with a unique namespace and cross-scope access rules."],
+/* 3 */ ["Platform","What does the Favorites feature let users do?",["Pin frequently used modules and records for quick access","Rate knowledge articles","Mark incidents as high priority","Subscribe to notifications"],"Favorites are personal shortcuts in the navigator header."],
+/* 4 */ ["Database","What does a Dictionary entry define?",["Properties of a table column such as type and length","A users role list","An email template","A report schedule"],"Dictionary entries (sys_dictionary) describe each field on each table."],
+/* 5 */ ["Database","What does a Reference field store?",["A link to a record in another table","A fixed list of choices","A script","A file attachment"],"A reference field holds the sys_id of a record on the referenced table and displays its display value."],
+/* 6 */ ["Database","What happens when you extend a table?",["The child table inherits the parent fields","The parent table is deleted","Data is copied weekly","Only ACLs are inherited"],"Extending creates a child that inherits fields and behavior; Incident extends Task."],
+/* 7 */ ["Database","What is a sys_id?",["A 32-character unique identifier for a record","The users login name","A table label","A script include name"],"Every record has a globally unique sys_id."],
+/* 8 */ ["Database","What is dot-walking?",["Accessing fields of related records through reference fields","Copying a record","Navigating with the keyboard","Exporting to Excel"],"Example: caller_id.manager.email from an incident."],
+/* 9 */ ["Database","Which field type suits a fixed set of selectable values?",["Choice","String","Journal","Reference"],"Choice fields present a dropdown of predefined options stored in sys_choice."],
+/* 10 */ ["Security","How are ACLs evaluated for a field?",["Most specific (table.field) first, then table.*, then wildcards","Alphabetically","Wildcard first","Randomly"],"Field-level ACLs are checked before table-level and parent-level rules."],
+/* 11 */ ["Security","Which role grants full administrative access?",["admin","itil","sn_user","catalog"],"The admin role gives unrestricted access to the instance."],
+/* 12 */ ["Security","What does impersonation let an admin do?",["Experience the system as another user for testing","Reset a users password","Delete a user","Clone an instance"],"Impersonate User is useful for verifying ACLs, roles and UI behavior."],
+/* 13 */ ["Automation","Where does a Client Script run?",["In the users browser","On the database server","On the MID Server","In the email engine"],"Client Scripts run client-side, for example onChange or onLoad of a form."],
+/* 14 */ ["Automation","When does a Before Business Rule run?",["Before the record is saved to the database","After the record is saved","Only on delete","Only on query by admins"],"Before rules can modify current without an extra update call."],
+/* 15 */ ["Automation","What does a UI Action provide?",["Buttons, links or context menu items on forms and lists","Scheduled jobs","Import mappings","Email layouts"],"UI Actions can run client or server scripts."],
+/* 16 */ ["Automation","What are the main building blocks of Flow Designer?",["A trigger plus actions","Transform maps","Dictionary entries","Report filters"],"Flows start with a trigger and run actions, flow logic and subflows."],
+/* 17 */ ["Automation","What does a Scheduled Job do?",["Runs a script or action at a defined time or interval","Creates ACLs","Imports a form layout","Sends a survey"],"Scheduled Jobs automate recurring server tasks."],
+/* 18 */ ["Data","What is an Import Set table?",["A staging table that holds imported data before transforming","The final target table","A report","An ACL table"],"Data Source loads rows into the import set, then a Transform Map moves them to the target."],
+/* 19 */ ["Data","What is the purpose of a Coalesce field in a transform map?",["Match existing records to update instead of creating duplicates","Encrypt data","Sort rows","Delete old records"],"If a coalesce match is found the target record is updated; otherwise a new one is inserted."],
+/* 20 */ ["Data","How does a Data Policy differ from a UI Policy?",["It is enforced on the server as well as the client","It only affects the mobile app","It cannot make fields mandatory","It runs only at night"],"Data Policies apply to imports and web services, not just forms."],
+/* 21 */ ["Catalog","What is a Variable Set?",["A reusable group of variables shared across catalog items","A set of ACLs","A group of users","A report type"],"Variable sets avoid recreating the same questions on many items."],
+/* 22 */ ["Catalog","What does a Record Producer do?",["Lets users create a task record such as an incident via the catalog","Produces PDF reports","Imports CSV files","Creates users"],"It presents a catalog-style form that inserts a record into a chosen table."],
+/* 23 */ ["Catalog","What is an Order Guide?",["Lets users order multiple related items in one request","A tutorial video","A list of approvers","An SLA"],"Order guides bundle items, such as everything needed for a new hire."],
+/* 24 */ ["Catalog","What records are created when a catalog item is ordered?",["A Request (REQ), Requested Item (RITM) and tasks","Only an incident","Only a change","A problem"],"Catalog orders produce a request, one or more RITMs and catalog tasks."],
+/* 25 */ ["ITSM","How does a Problem relate to Incidents?",["It is the root cause of one or more incidents","It is a duplicate incident","It is a type of change","It is an SLA breach"],"Problem management finds and fixes underlying causes."],
+/* 26 */ ["ITSM","Which change type is pre-approved and low risk?",["Standard","Emergency","Normal","Major"],"Standard changes follow a pre-authorized template."],
+/* 27 */ ["Reporting","What is a Dashboard?",["A page that collects multiple reports and visualizations","A single list view","An ACL set","A scheduled job"],"Dashboards combine widgets and reports for at-a-glance monitoring."],
+/* 28 */ ["Notifications","What processes incoming emails to create or update records?",["Inbound Email Action","Notification rule","Email template","Transform Map"],"Inbound actions evaluate conditions and run scripts or actions on received emails."],
+/* 29 */ ["Notifications","What can trigger an email notification?",["A record change or a registered event","Only manual sending","Only schedules","Only imports"],"Notifications can fire on insert, update, or an event from the Event Registry."],
+/* 30 */ ["Knowledge","Which article state makes it visible to users who meet its access criteria?",["Published","Draft","Retired","Review"],"Articles move from Draft through Review to Published; Retired removes them from use."],
+/* 31 */ ["Platform","What is an instance?",["A dedicated deployment of the platform for one customer","A single table","A user group","A browser tab"],"Each customer gets its own instance with separate data and configuration."],
+/* 32 */ ["Platform","What does the Application Navigator show?",["Applications and modules the user can access","Only reports","Only favorites","System logs"],"It is the left menu listing applications and their modules."],
+/* 33 */ ["Platform","What is a module?",["A navigator link that opens a list, form, or page","A database table","A user role","A plugin"],"Modules are the entries grouped under an application."],
+/* 34 */ ["Platform","What is a plugin?",["An optional feature package that can be activated","A browser extension","A table","A report"],"Plugins add functionality and are activated by admins."],
+/* 35 */ ["Platform","What is the Service Portal or Employee Center mainly for?",["Self-service front end for end users","Admin scripting","Database backup","MID Server setup"],"Portals let requesters raise tickets, browse the catalog and read knowledge."],
+/* 36 */ ["Database","What is a Related List?",["Records from other tables related to the current record","A dropdown","A report","A notification"],"Example: Incident tasks shown under an incident form."],
+/* 37 */ ["Database","What does Form Layout configure?",["Which fields appear and in what order","ACLs","Email content","Flow triggers"],"Form Layout controls field placement and sections."],
+/* 38 */ ["Database","What does List Layout configure?",["Which columns appear in a list","Form buttons","SLA timers","Script includes"],"Personalize List Columns changes your own view only."],
+/* 39 */ ["Database","Which field type keeps comments or work notes with history?",["Journal","String","Choice","Integer"],"Journal fields append entries and show who wrote them and when."],
+/* 40 */ ["Database","What is a Dictionary Override used for?",["Changing field attributes on a child table without affecting the parent","Deleting a table","Importing data","Encrypting a field"],"Overrides alter inherited properties such as default value or mandatory."],
+/* 41 */ ["Database","What is a Database View?",["A virtual table that joins tables for reporting","A backup","A form","A role"],"Database views let you report across joined tables."],
+/* 42 */ ["Database","What is a Display Value?",["The human-readable value shown for a reference","The sys_id","The table name","A script"],"References store sys_id but show the display field, such as name."],
+/* 43 */ ["Security","What is a role?",["A set of permissions that grants access","A table","A report","An email"],"Roles are assigned to users or groups and checked by ACLs."],
+/* 44 */ ["Security","What does a role that Contains Roles do?",["Inherits all the contained roles","Deletes them","Hides them","Imports them"],"Role containment simplifies role assignment."],
+/* 45 */ ["Security","Which are the standard ACL operations?",["read, write, create, delete","view, edit","get, put","open, close"],"ACLs are defined per operation on a table or field."],
+/* 46 */ ["Security","To pass an ACL, what must be true?",["Role, condition and script checks all pass","Any one check passes","Only the role matches","None are checked"],"All defined checks in the ACL must evaluate to true."],
+/* 47 */ ["Automation","When does an After Business Rule run?",["After the record is saved","Before it is saved","In the browser","At login"],"After rules are used for actions such as updating related records."],
+/* 48 */ ["Automation","What does an Async Business Rule do?",["Runs in the background after save","Runs before save","Runs in the browser","Never runs"],"Async rules run on a queue so they do not slow the user."],
+/* 49 */ ["Automation","What is a Script Include?",["A reusable server-side script library","A client script","A UI Policy","A notification"],"Script Includes hold classes and functions called from other server scripts."],
+/* 50 */ ["Automation","Which client script type runs when a field value changes?",["onChange","onLoad","onSubmit","onCellEdit"],"onChange fires when the watched field changes on a form."],
+/* 51 */ ["Automation","What is an Event in ServiceNow?",["A record that something happened, used to trigger notifications and scripts","A meeting","A log file","An ACL"],"Events are registered in the Event Registry and queued when fired."],
+/* 52 */ ["Automation","What does gs.info() do?",["Writes a message to the system log","Sends an email","Creates an incident","Impersonates a user"],"gs is the GlideSystem API for server-side scripts."],
+/* 53 */ ["Automation","What is a Subflow?",["A reusable flow called from other flows","A child table","A report","An update set"],"Subflows package logic for reuse."],
+/* 54 */ ["Automation","What is the Ask for Approval action used for?",["Requesting approval before the flow continues","Deleting records","Importing data","Building reports"],"The flow waits for approvers and branches on the outcome."],
+/* 55 */ ["Data","What loads data from a file or source into an Import Set?",["A Data Source","A Transform Map","An ACL","A report"],"The Data Source defines the file or connection and the staging table."],
+/* 56 */ ["Data","What does an Update Set Preview do?",["Checks for problems before commit","Commits the changes","Deletes the set","Backs up the instance"],"Preview finds missing dependencies and collisions."],
+/* 57 */ ["Data","What is the Default update set?",["Where changes are captured if no other set is current","A production backup","A read-only set","A report"],"Avoid working in Default; create named sets for each change."],
+/* 58 */ ["Data","What does instance cloning do?",["Copies data and configuration from one instance to another","Creates a user","Builds an update set","Imports a CSV"],"Clones refresh sub-production instances from production."],
+/* 59 */ ["Catalog","What is a Catalog Client Script?",["A client script for catalog item variables","A server script","An email template","A report"],"It adds client-side behavior on item variables."],
+/* 60 */ ["Catalog","What is a Catalog Category?",["A way to organize items for browsing","A role","An ACL","A flow"],"Categories group items inside a catalog."],
+/* 61 */ ["Catalog","What controls who can see a catalog item?",["User Criteria (availability)","Dictionary","Import set","Event"],"Available for and Not available for use user criteria."],
+/* 62 */ ["ITSM","Which fields determine Incident Priority by default?",["Impact and Urgency","Category and Subcategory","Caller and Group","State and SLA"],"A priority lookup maps impact and urgency to priority."],
+/* 63 */ ["ITSM","What is the initial state of a new incident?",["New","Resolved","Closed","On Hold"],"Incidents move New, In Progress, Resolved, Closed."],
+/* 64 */ ["ITSM","What does the Change Advisory Board do?",["Reviews and approves changes","Resolves incidents","Imports data","Builds reports"],"CAB assesses risk and authorizes normal and major changes."],
+/* 65 */ ["ITSM","What does the Resolved state mean for an incident?",["A fix is applied and awaiting confirmation","It is permanently closed","It was just created","It is on hold"],"Resolved incidents auto-close after a set period."],
+/* 66 */ ["SLA","What does an SLA stop condition do?",["Ends the SLA timer","Starts the timer","Pauses the timer","Cancels notifications"],"Stop conditions mark the SLA complete."],
+/* 67 */ ["SLA","What does an SLA pause condition do?",["Temporarily stops the clock, such as On Hold","Ends the SLA","Starts the SLA","Deletes the SLA"],"Time on hold does not count against the SLA."],
+/* 68 */ ["SLA","What does a Schedule define for an SLA?",["Working hours used to count elapsed time","Roles","Tables","Reports"],"Only schedule hours count toward the duration."],
+/* 69 */ ["CMDB","What does CI stand for?",["Configuration Item","Customer Interaction","Change Impact","Core Instance"],"A CI is any component managed in the CMDB."],
+/* 70 */ ["CMDB","Which table is the base for configuration items?",["cmdb_ci","task","sys_user","incident"],"CI classes extend cmdb_ci."],
+/* 71 */ ["CMDB","What does Discovery do?",["Finds devices and populates the CMDB","Imports users","Sends email","Builds reports"],"Discovery scans the network and records CIs and relationships."],
+/* 72 */ ["Reporting","How can reports be shared on a schedule?",["Scheduled and emailed to recipients","Not possible","Only admins can view","Only as pie charts"],"Report scheduling emails a snapshot to users or groups."],
+/* 73 */ ["Reporting","Which chart best shows proportions of a whole?",["Pie","Line","Scatter","Table"],"Pie and donut charts show shares."],
+/* 74 */ ["Reporting","What does Performance Analytics track?",["KPIs over time with trends","Table schema","ACLs","Email logs"],"It collects scores to show trends and compare to targets."],
+/* 75 */ ["Notifications","What is a Notification Email Script used for?",["Adding dynamic content to an email","Importing data","Sending SMS only","Defining roles"],"It runs server-side to generate message content."],
+/* 76 */ ["Notifications","Who can be notification recipients?",["Users, groups, and users in record fields","Only users","Only groups","Only admins"],"Recipients are flexible, including event parameters."],
+/* 77 */ ["Knowledge","What is a Knowledge Base?",["A container of articles with its own access and workflow","A table","A role","A report"],"Each base has managers, owners and user criteria."],
+/* 78 */ ["Knowledge","What does User Criteria control in Knowledge?",["Who can read or contribute","Search ranking","Imports","Email layout"],"Can Read and Can Contribute criteria gate access."],
+/* 79 */ ["Collaboration","What do Assignment Rules do?",["Automatically assign tasks to users or groups by conditions","Send surveys","Import data","Create ACLs"],"They reduce manual triage."],
+/* 80 */ ["Collaboration","What is a Visual Task Board?",["A Kanban-style board for tasks","A report type","An ACL","A form"],"Cards move across lanes to show progress."],
+/* 81 */ ["Collaboration","What is Delegation?",["Lets someone handle approvals and tasks for another user for a period","Impersonation","Deleting a user","A role"],"Delegates receive approvals and assignments for the delegator."],
+/* 82 */ ["Platform","Which table stores users?",["sys_user","sys_user_group","sys_user_role","task"],"sys_user holds user records."],
+/* 83 */ ["Platform","Which table stores groups?",["sys_user_group","sys_user","sys_group","group_table"],"Groups live in sys_user_group."],
+/* 84 */ ["Platform","Which table stores roles?",["sys_user_role","sys_role","roles","sys_user"],"Roles live in sys_user_role."],
+/* 85 */ ["Platform","What does the banner frame contain?",["Logo, global search, profile and settings","Only forms","Only reports","Only logs"],"It is the top bar of the UI."],
+/* 86 */ ["Platform","What is the Global scope?",["The default scope for unscoped customizations","A private scope","A production-only scope","A read-only scope"],"Scoped apps use their own namespace instead."],
+/* 87 */ ["Platform","What is the ServiceNow Store?",["A marketplace for apps and integrations","A table","A log","A report"],"Certified apps can be installed from it."],
+/* 88 */ ["Platform","Where can admins review system activity messages?",["System Logs","Dictionary","Update Sets","Homepage"],"System Logs include All, Errors and Warnings."],
+/* 89 */ ["Platform","What does the Application Picker do?",["Sets the application scope you develop in","Picks a theme","Picks a role","Picks a report"],"Choose scope before building scoped customizations."],
+/* 90 */ ["Platform","What can users change in their own preferences?",["Theme, time zone, and display options","ACLs","Dictionary","Update sets"],"Preferences are personal settings."],
+/* 91 */ ["Database","Which field type stores true or false?",["True/False","Choice","String","Reference"],"True/False is a boolean field."],
+/* 92 */ ["Database","What is a Glide List field?",["Stores multiple references to records","A single choice","A script","A report"],"Example: the Watch list."],
+/* 93 */ ["Database","What is a Document ID field?",["A reference to a record in any table","An attachment","A script","A choice"],"It pairs with a table name field."],
+/* 94 */ ["Database","What does the Unique attribute enforce?",["No duplicate values in the field","Mandatory input","Read-only","Encryption"],"Duplicate inserts are rejected."],
+/* 95 */ ["Database","What generates Incident numbers like INC0010001?",["Number Maintenance","Update sets","Import sets","Events"],"Prefix and counter are set in Number Maintenance."],
+/* 96 */ ["Database","Which table stores attachment metadata?",["sys_attachment","sys_file","attachments","task"],"File content is in sys_attachment_doc."],
+/* 97 */ ["Database","What does sys_db_object store?",["Table definitions","Users","Roles","Groups"],"Each table has a record here."],
+/* 98 */ ["Database","What is a dependent choice list?",["Choices that depend on another field","A reference","A script","A role"],"Example: subcategory depends on category."],
+/* 99 */ ["Database","What does Auditing do on a table?",["Tracks field value changes in history","Creates reports","Adds roles","Imports data"],"Audited fields show in the History view."],
+/* 100 */ ["Database","Which field records who created a record?",["sys_created_by","sys_updated_by","opened_by","caller_id"],"System fields track created and updated info."],
+/* 101 */ ["Database","What does the Mandatory attribute do?",["Requires a value before saving","Hides the field","Makes it unique","Encrypts it"],"Can be set in dictionary, UI Policy or script."],
+/* 102 */ ["Security","What is domain separation?",["Separating data and processes for multiple tenants","A backup method","An import tool","A report type"],"Used by MSPs and large enterprises."],
+/* 103 */ ["Security","What does elevating to security_admin allow?",["Creating and editing ACLs","Resetting passwords","Cloning","Importing data"],"Elevated privilege is needed to change ACLs."],
+/* 104 */ ["Security","What is SSO used for?",["Logging in with an external identity provider","Scripting","Importing","Reporting"],"Single sign-on uses SAML or OIDC."],
+/* 105 */ ["Security","What is LDAP integration commonly used for?",["Importing users and groups from a directory","Sending email","Building reports","Writing scripts"],"It keeps user data synced with the directory."],
+/* 106 */ ["Security","How do you stop a user logging in without deleting them?",["Set Active to false","Delete the roles","Clone the user","Impersonate"],"Inactive users cannot authenticate."],
+/* 107 */ ["Security","What does multi-factor authentication add?",["A second verification step at login","A new role","A new table","A backup"],"It reduces account takeover risk."],
+/* 108 */ ["Security","Where are users added to a group?",["The Group Members related list on the group","Dictionary","A flow only","A report"],"You can also edit groups on the user record."],
+/* 109 */ ["Automation","What does current represent in a Business Rule?",["The record being processed","The logged-in user","The old values","The table"],"Use current.field to read or set values."],
+/* 110 */ ["Automation","What does previous hold?",["The values before the update","The next record","The user","The script"],"Useful for detecting changes."],
+/* 111 */ ["Automation","What does GlideRecord do?",["Queries and modifies records on the server","Controls a form on the client","Sends email","Fires events"],"It is the main server-side database API."],
+/* 112 */ ["Automation","What does g_form do?",["Works with the form on the client","Queries the database","Sends email","Writes logs"],"Client scripts use g_form.getValue and setValue."],
+/* 113 */ ["Automation","What does gs.getUserID() return?",["The sys_id of the current user","The username","The group","The role"],"gs is GlideSystem on the server."],
+/* 114 */ ["Automation","What does g_user provide?",["Client-side info about the current user","Database access","Email tools","Update sets"],"Example: g_user.hasRole."],
+/* 115 */ ["Automation","What is a data pill in Flow Designer?",["A reference to data from earlier flow steps","A table","A role","A report"],"Pills are dragged into later actions."],
+/* 116 */ ["Automation","What is IntegrationHub?",["Connects ServiceNow to external systems with spokes","A dictionary","A UI theme","A role"],"Spokes provide ready-made actions."],
+/* 117 */ ["Automation","What is a spoke?",["A package of actions for integrating a system","A table","A role","A report"],"Example: the Slack spoke."],
+/* 118 */ ["Automation","What does Reverse if false do in a UI Policy?",["Undoes actions when conditions become false","Deletes the policy","Imports data","Locks the form"],"It restores the previous field state."],
+/* 119 */ ["Automation","Which is preferred for simple form behavior?",["UI Policy","Client Script","Business Rule","Update Set"],"Use UI Policy first, scripts only when needed."],
+/* 120 */ ["Automation","What does a Display Business Rule do?",["Passes server data to the client when a form loads","Runs before save","Runs after delete","Runs async"],"It populates g_scratchpad."],
+/* 121 */ ["Automation","What is a Fix Script?",["A one-time script for upgrades or data fixes","A recurring script","A client script","A report"],"Run it manually when needed."],
+/* 122 */ ["Automation","Where can you review flow runs?",["Flow Designer Executions","Dictionary","Update Sets","Reports only"],"Executions show status and step details."],
+/* 123 */ ["Automation","Which client script runs when a form is submitted?",["onSubmit","onChange","onLoad","onCellEdit"],"onSubmit can block the save by returning false."],
+/* 124 */ ["Data","What does the Import Log show?",["Results and errors of imports","Backups","Roles","Tables"],"Check it after each import."],
+/* 125 */ ["Data","What is a Field Map?",["Maps a source field to a target field","A role","A report","An event"],"Field maps live inside a transform map."],
+/* 126 */ ["Data","What is a Transform Script used for?",["Custom logic during a transform","Client validation","UI buttons","Events"],"Types include onBefore and onAfter."],
+/* 127 */ ["Data","Which export formats are available for lists?",["CSV, Excel, PDF, XML, JSON","Only CSV","Only PDF","Only XML"],"Right-click the list header to export."],
+/* 128 */ ["Data","What is the REST Table API?",["Reads and writes table records over REST","A UI theme","A role","A report"],"It is an inbound integration option."],
+/* 129 */ ["Data","What is a MID Server?",["A server in your network that communicates with the instance","A table","A role","A browser"],"Used by Discovery and integrations."],
+/* 130 */ ["Data","What does a Retrieved update set mean?",["Pulled from another instance, not yet committed","Already committed","Backed up","In progress"],"Preview then commit it."],
+/* 131 */ ["Data","What happens when you Run Transform?",["Staging rows are loaded into the target table","The instance restarts","Roles are reset","Reports are built"],"Maps and coalesce rules are applied."],
+/* 132 */ ["Data","Why use a Data Source with an Import Set?",["It defines where the data comes from","It sets roles","It builds forms","It sends email"],"Sources include files, JDBC and REST."],
+/* 133 */ ["Catalog","What is a Catalog Item?",["An orderable product or service","A table","A role","A script"],"Items appear in categories."],
+/* 134 */ ["Catalog","What is a Catalog UI Policy?",["A UI policy for catalog item variables","An ACL","An email","A flow"],"It changes variable behavior on the item form."],
+/* 135 */ ["Catalog","What is a catalog variable?",["A question on a catalog item form","A table","A role","An event"],"Variables capture request details."],
+/* 136 */ ["Catalog","What does fulfillment mean for a catalog item?",["Completing the request via a flow or tasks","Importing data","Editing the dictionary","Reporting"],"Flows create tasks and approvals."],
+/* 137 */ ["Catalog","What is the shopping cart used for?",["Holding items before the order is submitted","Creating roles","Defining tables","Running reports"],"Users can order several items together."],
+/* 138 */ ["Catalog","What is a Catalog Task?",["A task created to fulfill a requested item","A table","A role","A report"],"Stored in sc_task."],
+/* 139 */ ["Catalog","Which table stores Requested Items?",["sc_req_item","sc_request","sc_task","sc_cart"],"RITMs are in sc_req_item."],
+/* 140 */ ["ITSM","What is a Major Incident?",["A high-impact incident needing a special response","A duplicate","A low-priority one","A closed one"],"It follows a major incident process."],
+/* 141 */ ["ITSM","Why use parent and child incidents?",["To group related incidents under one parent","To delete incidents","To import data","To create roles"],"Resolving the parent can resolve children."],
+/* 142 */ ["ITSM","What does a Problem Task do?",["Splits problem work into assignable tasks","Closes the problem","Imports data","Creates roles"],"Extends Task like other records."],
+/* 143 */ ["ITSM","What is a workaround on a problem?",["A temporary way to reduce impact until a fix","The final fix","A deletion","A report"],"It can be shared via knowledge."],
+/* 144 */ ["ITSM","What is an Emergency change?",["An urgent change to fix a critical issue","A low-risk change","A pre-approved change","A recurring change"],"It has an expedited approval path."],
+/* 145 */ ["ITSM","What does change risk assessment estimate?",["The likelihood and impact of failure","The cost","The roles","The tables"],"Risk can be calculated by conditions."],
+/* 146 */ ["ITSM","What does conflict detection find?",["Overlapping changes on the same CIs or times","Missing roles","Import errors","Report issues"],"It helps avoid clashing changes."],
+/* 147 */ ["ITSM","Who typically holds the itil role?",["Fulfillers such as agents","Requesters","Guests","Auditors only"],"ITIL users work on tasks."],
+/* 148 */ ["ITSM","Which incident field identifies who reported the issue?",["Caller","Assigned to","Opened by only","Category"],"caller_id references sys_user."],
+/* 149 */ ["ITSM","Which field shows who is working an incident?",["Assigned to","Caller","Category","Impact"],"assigned_to references sys_user."],
+/* 150 */ ["CMDB","What is a CI relationship?",["A link showing dependency between CIs","A role","A report","A group"],"Example: an app runs on a server."],
+/* 151 */ ["CMDB","What does CMDB Health measure?",["Completeness, correctness and compliance of CI data","Backups","Imports","Roles"],"Dashboards show health scores."],
+/* 152 */ ["CMDB","What is a CI class?",["A table type defining CI attributes","A role","A report","An event"],"Examples: Server, Router."],
+/* 153 */ ["CMDB","What does a Dependency View show?",["A map of CI relationships","A report","A form","An ACL"],"It visualizes upstream and downstream CIs."],
+/* 154 */ ["CMDB","What is Service Mapping used for?",["Mapping application services and their dependencies","Importing users","Sending email","Cloning"],"It builds top-down service maps."],
+/* 155 */ ["SLA","What does an SLA breach mean?",["The time limit was exceeded","The SLA was created","The SLA paused","The task resolved"],"Breaches can trigger escalations."],
+/* 156 */ ["SLA","What is an OLA?",["An Operational Level Agreement between internal teams","An external contract","An online agreement","An order list"],"OLAs support SLAs internally."],
+/* 157 */ ["SLA","What is an Underpinning Contract?",["An agreement with an external vendor","An internal agreement","A role","A table"],"UCs support SLAs from third parties."],
+/* 158 */ ["Reporting","What does Group by do in a report?",["Splits data by a field value","Deletes data","Imports data","Sets roles"],"Bar and pie charts use it."],
+/* 159 */ ["Reporting","What does a Single Score report show?",["One number such as a count","A chart","A list","A map"],"Good for dashboard KPIs."],
+/* 160 */ ["Reporting","What does a Trend report show?",["Data over time","One number","A list","A map"],"Trends need a date field."],
+/* 161 */ ["Reporting","What does a Pivot Table report show?",["A cross-tabulation of two fields","A list","A single score","A gauge"],"Rows and columns are field values."],
+/* 162 */ ["Reporting","With whom can a report be shared?",["Users, groups or roles","Only admins","No one","Only guests"],"Sharing controls who can view it."],
+/* 163 */ ["Notifications","What does a notification digest do?",["Combines multiple notifications into one email","Deletes them","Imports them","Sends SMS"],"It reduces email volume."],
+/* 164 */ ["Notifications","Where can you review sent and received emails?",["System Mailboxes (Email Logs)","Update Sets","Dictionary","Reports"],"Check Sent, Received and Outbox."],
+/* 165 */ ["Notifications","What is an Email Template?",["Reusable content for notifications","A role","A table","An event"],"Templates keep messages consistent."],
+/* 166 */ ["Notifications","What do notification subscriptions allow?",["Users to opt in or out of notifications","Roles to be created","Reports to run","Flows to run"],"Applies to notifications marked as subscribable."],
+/* 167 */ ["Notifications","What does the Email Client on a form do?",["Lets users compose emails from the record","Imports email","Creates roles","Runs scripts"],"Replies are linked to the record."],
+/* 168 */ ["Knowledge","What do knowledge article versions track?",["Revisions of an article","Roles","Imports","Tables"],"Previous versions can be reviewed."],
+/* 169 */ ["Knowledge","What is a Knowledge Category?",["Organizes articles within a knowledge base","A role","A table","A report"],"Categories help browsing."],
+/* 170 */ ["Knowledge","What is article flagging?",["Users flag inaccurate articles for review","Deleting articles","Importing articles","Creating roles"],"Flags prompt the owner to review."],
+/* 171 */ ["Knowledge","What does the Valid to date control?",["When the article expires","When it was created","Who owns it","Which table it uses"],"Expired articles are no longer shown."],
+/* 172 */ ["Knowledge","What can fulfillers do with knowledge on an incident?",["Attach or link articles to the incident","Nothing","Delete articles","Only admins can"],"Attachments help reuse and track usage."],
+/* 173 */ ["Collaboration","What are surveys used for?",["Collecting feedback through questions","Creating roles","Defining tables","Running reports"],"Often sent after an incident closes."],
+/* 174 */ ["Collaboration","What does tagging do?",["Labels records for organization and search","Creates roles","Imports data","Builds reports"],"Tags can be personal or shared."],
+/* 175 */ ["Collaboration","What does the activity stream show?",["The history of updates on a record","A report","A role","A flow"],"It lists comments, work notes and field changes."],
+/* 176 */ ["Collaboration","What is the Watch list?",["Users who get updates without being assigned","Deleted users","A role","A table"],"Watch list members receive notifications."],
+/* 177 */ ["Collaboration","What is the difference between Additional comments and Work notes?",["Comments are customer-visible; work notes are internal","They are identical","Comments are internal","Both are public"],"Use work notes for internal details."],
+/* 178 */ ["Collaboration","What does a Visual Task Board card represent?",["A task or record on the board","A user","A role","A report"],"Cards move between lanes."],
+/* 179 */ ["UI and Forms","What does right-clicking a form header offer?",["A context menu with Save, Copy, Configure and History","Only delete","Nothing","Logout"],"The header menu has user and admin options."],
+/* 180 */ ["UI and Forms","What is Form Designer used for?",["Drag-and-drop form layout changes","Writing ACLs","Importing data","Running flows"],"Configure > Form Design."],
+/* 181 */ ["UI and Forms","What is a form section?",["A group of fields on a form","A table","A role","An event"],"Sections organize the layout."],
+/* 182 */ ["UI and Forms","What is a form view?",["A different layout of the same form for a context","A report","A role","A table"],"Example: a Self Service view."],
+/* 183 */ ["UI and Forms","What does a UI Formatter do?",["Adds special elements such as the activity stream","Imports data","Creates roles","Fires events"],"Formatters are placed on forms."],
+/* 184 */ ["UI and Forms","What does the breadcrumb above a list show?",["The active filter conditions","The role","The table schema","The log"],"Click a crumb to adjust the filter."],
+/* 185 */ ["UI and Forms","How can you edit values directly in a list?",["List editing by double-clicking a cell","Dictionary","Update Set","Event"],"Respects ACLs and field rules."],
+/* 186 */ ["UI and Forms","What is a UI Script?",["Reusable client-side JavaScript","A server script","A role","A report"],"Available to client scripts and pages."],
+/* 187 */ ["UI and Forms","What is a UI Macro?",["A reusable XML/Jelly UI component","A role","A table","An event"],"Often used in formatters."],
+/* 188 */ ["UI and Forms","What does right-clicking a list record show?",["A context menu of actions","A report","A role","A table"],"Context menu UI Actions appear here."],
+/* 189 */ ["UI and Forms","What can you do with a saved list filter?",["Save it to favorites or share it","Make a role","Make a table","Run a flow"],"Filters can be reused."],
+/* 190 */ ["UI and Forms","What does AND vs OR do in a filter?",["Combines conditions in the query","Creates roles","Runs backups","Imports data"],"AND needs all, OR needs any."],
+/* 191 */ ["Platform","What do System Properties store?",["Instance configuration settings","Users","Roles","Tickets"],"Stored in sys_properties."],
+/* 192 */ ["Platform","What is Scripts - Background used for?",["Running server scripts on demand","Scheduling jobs","Client scripts","Reports"],"Use carefully, mainly in non-production."],
+/* 193 */ ["Platform","What is the Script Debugger?",["A tool for debugging server-side scripts","A client tool","A report","A role"],"Set breakpoints and inspect variables."],
+/* 194 */ ["Platform","What does Instance Scan do?",["Checks instance health and best practices","Imports data","Creates roles","Sends reports"],"It flags risky configuration."],
+/* 195 */ ["Platform","What is Studio?",["An IDE for building scoped applications","A table","A role","A report"],"Used to create and edit app files."],
+/* 196 */ ["Platform","What is App Engine Studio?",["A low-code tool for building apps","A report","A role","A log"],"Guides creating tables, flows and UI."],
+/* 197 */ ["Platform","What is a PDI?",["A free personal developer instance","A production instance","A backup","A plugin"],"Available from the Developer Program."],
+/* 198 */ ["Platform","What do cross-scope privileges control?",["Access between scoped applications","User roles","Reports","Email"],"Apps request access to other scopes."],
+/* 199 */ ["Platform","What does marking an update set Complete mean?",["It is ready to be moved to another instance","It is committed","It is deleted","It is active"],"Only complete sets can be retrieved."],
+/* 200 */ ["Platform","What is a Service Portal widget?",["A reusable UI component","A role","A table","An event"],"Pages are built from widgets."],
+/* 201 */ ["Database","What does the Extensible option on a table do?",["Lets other tables extend it","Makes it read-only","Deletes it","Encrypts it"],"Required for child tables."],
+/* 202 */ ["Database","How is a one-to-many relationship modeled?",["A reference field on the child table","An update set","A role","An event"],"Example: incidents refer to a caller."],
+/* 203 */ ["Database","What is a many-to-many table?",["A table holding references to two other tables","A single reference","A role","A report"],"Example: user group membership."],
+/* 204 */ ["Database","What does a dictionary Default value do?",["Pre-fills new records","Makes it mandatory","Hides it","Makes it read-only"],"Applied when a record is created."],
+/* 205 */ ["Database","What does the Read-only attribute do?",["Prevents editing on forms","Hides the field","Makes it unique","Encrypts it"],"Scripts can still set the value."],
+/* 206 */ ["Database","What is the default max length of a String field?",["40 characters","255","1000","4"],"You can raise it in the dictionary."],
+/* 207 */ ["Database","What does a Currency field store?",["An amount with its currency","Text","A boolean","A date"],"Supports conversion between currencies."],
+/* 208 */ ["Database","In what time zone are Date/Time values stored?",["UTC","Local time","Pacific","Server local"],"They display in the users time zone."],
+/* 209 */ ["Database","What does a Duration field store?",["Elapsed time","A date","Text","A role"],"Example: Business duration."],
+/* 210 */ ["Database","What is the table Display field?",["The field used as display value in references","The primary key","A role","An index"],"Often name or number."],
+/* 211 */ ["Database","What does a database index do?",["Speeds up queries on a field","Deletes data","Creates a role","Builds a report"],"Indexes help large tables."],
+/* 212 */ ["Database","Which prefix does a Problem number use?",["PRB","INC","CHG","REQ"],"Prefix is set in Number Maintenance."],
+/* 213 */ ["Security","What is the guest user?",["The unauthenticated public access user","An admin","An itil user","An agent"],"Public pages run as guest."],
+/* 214 */ ["Security","What does Requires role mean on an ACL?",["The user needs one of the listed roles","Any user passes","Admins only","Guests only"],"Roles are checked first."],
+/* 215 */ ["Security","What does an ACL condition check?",["Field values on the record","The theme","The browser","The log"],"It adds data-based restrictions."],
+/* 216 */ ["Security","What must an advanced ACL script set?",["The answer variable to true or false","A role","A print","An event"],"answer = true grants access."],
+/* 217 */ ["Security","What do application access settings control?",["Cross-scope access to an apps tables","User passwords","Reports","Email"],"Includes can read, create, write."],
+/* 218 */ ["Security","What does a role with Contains Roles simplify?",["Granting several roles at once","Deleting users","Backups","Imports"],"Contained roles are inherited."],
+/* 219 */ ["Automation","What does GlideAjax do?",["Calls a Script Include from the client","Writes ACLs","Imports data","Writes logs"],"It makes asynchronous server calls."],
+/* 220 */ ["Automation","What should you avoid in a Before Business Rule?",["Calling current.update()","Setting field values","Reading current","Using conditions"],"The save happens automatically."],
+/* 221 */ ["Automation","What does current.setAbortAction(true) do?",["Stops the database operation","Deletes the record","Imports data","Writes a log"],"Common in validation rules."],
+/* 222 */ ["Automation","What does gr.next() do?",["Moves to the next record in the results","Deletes a record","Creates a record","Sends an email"],"Used in while loops."],
+/* 223 */ ["Automation","What does gr.insert() do?",["Creates a new record","Deletes a record","Updates a record","Queries records"],"Set values first, then insert."],
+/* 224 */ ["Automation","What does gr.deleteRecord() do?",["Deletes the current record","Creates a record","Queries records","Sends an event"],"Use with care."],
+/* 225 */ ["Automation","What is GlideAggregate used for?",["Aggregate queries such as COUNT","Client forms","Email","Events"],"More efficient than looping GlideRecord."],
+/* 226 */ ["Automation","What does gs.addInfoMessage() do?",["Shows an information message to the user","Writes a log","Deletes a record","Sends email"],"Appears at the top of the page."],
+/* 227 */ ["Automation","What does For Each do in a flow?",["Loops over a list of records or items","Imports data","Creates roles","Builds reports"],"Use to process multiple records."],
+/* 228 */ ["Automation","What does Wait for Condition do in a flow?",["Pauses until a condition is met","Ends the flow","Deletes records","Starts a flow"],"Useful for waiting on state changes."],
+/* 229 */ ["Automation","What is the legacy Workflow Editor?",["An older graphical tool for workflows","The newest tool","A report","A role"],"Flow Designer is preferred for new work."],
+/* 230 */ ["Automation","What does a Scheduled flow trigger do?",["Runs at set times","Runs on insert","Runs on email","Runs manually only"],"Daily, weekly or monthly runs."],
+/* 231 */ ["Automation","Which When options exist for Business Rules?",["Before, After, Async, Display","Open, Close","Start, Stop","Load, Save"],"They control timing."],
+/* 232 */ ["Automation","What does Business Rule Order control?",["Execution sequence, lowest first","Alphabetical sort","Random choice","Nothing"],"Default order is 100."],
+/* 233 */ ["Automation","When does onCellEdit run?",["When a list cell is edited","On form load","On submit","On field change"],"It is a list-editing client script."],
+/* 234 */ ["Data","What is the target table in a transform map?",["The table receiving the imported data","The staging table","A role","A report"],"Source is the import set table."],
+/* 235 */ ["Data","What does Auto Map Matching Fields do?",["Maps fields with matching names","Deletes fields","Imports roles","Builds reports"],"Saves manual mapping work."],
+/* 236 */ ["Data","What is a Scheduled Import?",["Runs a data source import automatically","A manual import","A report","A role"],"Set frequency and time."],
+/* 237 */ ["Data","What does an Export Set do?",["Exports data on a schedule to a destination","Imports data","Creates roles","Builds reports"],"Often to SFTP or similar."],
+/* 238 */ ["Data","What does update set preview show?",["Collisions and missing items to resolve","Nothing","Deleted users","Reports"],"Resolve problems before commit."],
+/* 239 */ ["Data","What do update sets move by default?",["Configuration, not most record data","All incident data","All users","Backups"],"Use import or clone for data."],
+/* 240 */ ["Data","What can a Web Service Import Set do?",["Load data into staging via SOAP or REST","Edit forms","Create roles","Run reports"],"Then a transform maps it."],
+/* 241 */ ["Catalog","What does Order Now do?",["Skips the cart and orders immediately","Adds to cart","Deletes the item","Imports data"],"It creates the request directly."],
+/* 242 */ ["Catalog","What does a Reference variable let users do?",["Select a record from a table","Enter text","Pick a date","Tick a box"],"Can use reference qualifiers."],
+/* 243 */ ["Catalog","What is a Multi-row Variable Set?",["Lets users add multiple rows of entries","A single entry","A role","A report"],"Good for lists such as laptops."],
+/* 244 */ ["Catalog","What is a Service Catalog catalog?",["A container of categories and items","A role","A table","An event"],"Portals show one or more catalogs."],
+/* 245 */ ["Catalog","Which prefix does a Catalog Task use?",["SCTASK","RITM","REQ","INC"],"Requested items use RITM."],
+/* 246 */ ["ITSM","What is a close code?",["A value recording how an incident was resolved","Priority","A role","A table"],"Required with close notes."],
+/* 247 */ ["ITSM","What is typically required to resolve an incident?",["Close code and close notes","Nothing","Priority only","Group only"],"Enforced by UI Policy or rule."],
+/* 248 */ ["ITSM","What is escalation?",["Raising priority or involving higher support","Deleting the incident","Importing data","Creating roles"],"Often triggered by SLA breach."],
+/* 249 */ ["ITSM","What is a known error?",["A problem with a documented root cause and workaround","A new problem","A closed incident","A duplicate"],"Helps agents resolve repeats."],
+/* 250 */ ["ITSM","Which states exist for a Normal change?",["New, Assess, Authorize, Scheduled, Implement, Review, Closed","Open, Close","Start, Stop","Draft, Publish"],"Models define the exact path."],
+/* 251 */ ["ITSM","Which prefix does a Change Request use?",["CHG","INC","PRB","REQ"],"Set in Number Maintenance."],
+/* 252 */ ["ITSM","Which prefix does a Requested Item use?",["RITM","REQ","SCTASK","CHG"],"RITM lives in sc_req_item."],
+/* 253 */ ["ITSM","Which table stores approvals?",["sysapproval_approver","approval","sys_approval","task"],"Each approver has a record."],
+/* 254 */ ["ITSM","Which prefix does an Incident use?",["INC","CHG","PRB","REQ"],"Example: INC0010001."],
+/* 255 */ ["Reporting","What is a Performance Analytics indicator?",["A metric measured by PA","A role","A table","An event"],"Collects scores over time."],
+/* 256 */ ["Reporting","What is a breakdown in PA?",["A dimension that splits indicator data","A role","A table","An event"],"Example: by assignment group."],
+/* 257 */ ["Reporting","Which report type shows geographic data?",["Map","Pie","Bar","Gauge"],"Uses location fields."],
+/* 258 */ ["Reporting","What does a report filter do?",["Limits which records are included","Adds roles","Imports data","Deletes data"],"Applies to the report source."],
+/* 259 */ ["Notifications","What does Send when define?",["The event or record change that triggers it","A role","A report","A table"],"Options include Record inserted or updated, Event."],
+/* 260 */ ["Notifications","What does a notification condition do?",["Further limits when it sends","Creates roles","Builds reports","Runs flows"],"Checked after the trigger."],
+/* 261 */ ["Notifications","What is an Email Layout?",["A wrapper template with header and footer","A role","A table","An event"],"Gives emails a consistent look."],
+/* 262 */ ["Notifications","What does ${number} do in an email body?",["Inserts the record number","Deletes it","Imports it","Creates a role"],"Variable substitution uses record fields."],
+/* 263 */ ["Knowledge","What is a knowledge publish workflow?",["An approval process before articles go live","An import tool","A role","A report"],"Defined per knowledge base."],
+/* 264 */ ["Knowledge","What does article feedback allow?",["Users to rate usefulness","Roles to be created","Tables to be built","Events to fire"],"Ratings help improve content."],
+/* 265 */ ["Collaboration","What does a group type do?",["Classifies groups, for example ITIL","Creates roles","Builds tables","Fires events"],"Types help filtering and assignment."],
+/* 266 */ ["Collaboration","What does a schedule define?",["Working time used by SLAs and other features","A role","A table","A report"],"Example: 8 to 5 weekdays."],
+
+/* ADVANCED EXTENDED QUESTION SET (267 - 350) */
+/* 267 */ ["Platform","In Next Experience UI, what replaces the legacy Application Navigator and Header tabs?",["Unified Navigation with menus: All, Favorites, History, and Workspaces","The classic left iframe only","A desktop-only standalone client","The Gear icon settings menu"],"Unified Navigation integrates All applications, Favorites, History, and Workspaces across the top banner."],
+/* 268 */ ["Platform","What does typing 'incident.LIST' (uppercase) into the Filter Navigator do?",["Opens the incident list in a new browser tab or window","Opens the incident list in the current frame","Opens a blank incident form","Creates a new incident table"],"Table name followed by .LIST in uppercase opens the table list view in a brand-new browser tab."],
+/* 269 */ ["Platform","What does typing 'sys_user.form' into the Filter Navigator do?",["Opens a new, blank record form for that table","Opens the list view of users","Deletes the table schema","Opens dictionary properties for the table"],".form opens a new blank record form for the specified table."],
+/* 270 */ ["Platform","Where does an administrator configure company branding such as the banner logo and title?",["System Properties > Basic Configuration UI16 (or Guided Setup)","Dictionary entries for sys_user","Client Script manager","Update Set settings"],"Basic Configuration UI16 lets administrators upload banner logos, alter page titles, and set corporate themes."],
+/* 271 */ ["Platform","What are the three core structural elements of the ServiceNow browser interface?",["Banner Frame, Application Navigator, and Content Frame","Header, Footer, and Database","Form, Table, and Dictionary","Catalog, Knowledge, and Incidents"],"The Banner Frame is on top, the Navigator on the left/menu, and the Content Frame displays lists and forms."],
+/* 272 */ ["Platform","What is stored in the History tab of the Unified Navigation?",["Recently visited records, lists, forms, and homepages up to 30 items","All database changes made by all users","Deleted records from the recycle bin","System error logs"],"The History menu provides quick access to recently visited records, lists, and forms."],
+/* 273 */ ["Platform","What happens when a user clicks the gear icon in the banner frame?",["Opens the System Settings panel for user preferences","Reboots the instance","Opens developer background scripts","Exports instance logs"],"The gear icon opens personal user preferences (theme, accessibility, notifications, and time zone)."],
+/* 274 */ ["Platform","Which search engine feature searches across multiple record types including Knowledge, Tasks, and Catalog items simultaneously?",["Global Text Search","Filter Navigator","List Column Search","Form Context Search"],"Global Search runs indexed text searches across multiple tables defined in search groups."],
+/* 275 */ ["Platform","What does the Wildcard character '*' signify when searching in a ServiceNow list filter?",["Contains","Starts with","Ends with","Does not equal"],"*query performs a 'contains' search in text fields, while %query performs 'ends with'."],
+/* 276 */ ["Platform","What does the sys_id parameter 'sys_id=-1' in a URL signify to ServiceNow?",["Load a new, empty record form for that table","Load the most recently edited record","Delete the first row of the table","Export the table to XML"],"sys_id=-1 directs ServiceNow to instantiate a new record form ready for data input."],
+/* 277 */ ["Platform","What does the 'Insert and Stay' action do on an existing form record?",["Saves the record as a new duplicate and keeps the new record open on the screen","Updates the existing record and redirects to list","Closes the form without saving","Deletes the old record and replaces it"],"Insert and Stay creates a copy of the current record with a new sys_id and remains on that new record."],
+/* 278 */ ["Platform","What does the 'Insert' action do on an existing form record?",["Creates a duplicate copy of the record and returns to the previous list or page","Saves changes to the existing record","Deletes the current record","Exports the form to PDF"],"Insert clones the current values into a brand-new record and navigates back to the preceding list view."],
+/* 279 */ ["Database","Which table is the immediate parent of the Incident, Problem, and Change Request tables?",["task","sys_metadata","cmdb","planned_task"],"The task table provides common fields (number, priority, assigned_to, state) to child tables like Incident and Problem."],
+/* 280 */ ["Database","What is a Base Table in the ServiceNow data structure?",["A table that is extended by other tables but does not extend any table itself","A table with no columns","A table that cannot store data","A table created exclusively via import sets"],"A base table is at the root of a hierarchy (e.g., task, cmdb, cmdb_ci) and does not extend another table."],
+/* 281 */ ["Database","What is a Core Table in ServiceNow?",["A table provided out-of-the-box with the base system","A custom table created by an administrator","A staging table used by import sets","A temporary table for scheduled jobs"],"Core tables (e.g., task, incident, sys_user) are included out-of-the-box by ServiceNow."],
+/* 282 */ ["Database","What prefix is automatically added to custom table names created in the Global application scope?",["u_","x_","c_","cust_"],"Tables created in the global scope are prefixed with 'u_', while scoped custom tables use 'x_[vendor_id]_[app_id]'."],
+/* 283 */ ["Database","What prefix is assigned to custom tables created inside a Scoped Application?",["x_","u_","global_","sn_"],"Scoped application tables use the prefix 'x_' followed by the company code and application name."],
+/* 284 */ ["Database","What tool provides a graphical representation of relationships between tables in the schema?",["Schema Map","Form Designer","Flow Designer","Dependency Views"],"The Schema Map generates a visual diagram showing table inheritance, references, and relationships."],
+/* 285 */ ["Database","What is a Reference Qualifier used for?",["Filtering the selectable records available in a reference field","Changing the reference field into a choice list","Encrypting data inside a reference field","Converting reference fields into numbers"],"Reference qualifiers apply conditions or script logic to limit which records a user can choose."],
+/* 286 */ ["Database","Which type of Reference Qualifier executes a JavaScript function in a Script Include?",["Advanced","Simple","Dynamic","Coalesced"],"Advanced reference qualifiers execute JavaScript (e.g., javascript:new MyFilter().getMembers()) to return an encoded query."],
+/* 287 */ ["Database","What does the 'Display' check box on a sys_dictionary field record indicate?",["The value from this column is displayed when this table is referenced by another record","The field is visible on all forms","The field is highlighted in yellow","The field is exported to PDF automatically"],"Only one field per table can have Display=true; its value represents the record in reference popups."],
+/* 288 */ ["Database","How many fields on a single table can have the 'Display' attribute set to true?",["Only one","Up to three","Unlimited","Exactly five"],"Only one field per table can act as the display value for reference lookups."],
+/* 289 */ ["Database","What does the 'Reference Cascade Rule' determine?",["What happens to child or referencing records when the parent referenced record is deleted","How fast reference fields load","How many users can view a reference","How references are encrypted"],"Cascade rules (e.g., Clear, Delete, Cascade) specify the action taken when a referenced record is deleted."],
+/* 290 */ ["Database","What does an Encoded Query String represent in ServiceNow?",["A serialized string representation of filter conditions (e.g., 'active=true^priority=1')","An encrypted password hash","A compressed backup file","A base64 encoded picture"],"Encoded query strings represent complex filter criteria formatted as key-value condition pairs."],
+/* 291 */ ["Database","Which table contains deleted records that can be restored?",["sys_audit_delete","sys_deleted_data","sys_trash","sys_archive"],"sys_audit_delete tracks deleted records and allows administrators to restore them."],
+/* 292 */ ["Security","What are the three components evaluated in an Access Control (ACL) rule?",["Roles, Conditions, and Advanced Script","Username, Password, and IP Address","Domain, Company, and Department","Browser type, Screen width, and Device"],"An ACL can check Roles, evaluate record Conditions, and execute an advanced server-side Script."],
+/* 293 */ ["Security","When an ACL rule checks Roles, Conditions, and Scripts, how are they combined?",["All three checks must evaluate to TRUE (AND logic)","Any single TRUE check allows access (OR logic)","Roles override scripts regardless of conditions","Conditions only apply if roles are omitted"],"For an ACL to grant access, the user must have the required role, the condition must match, and the script must return true."],
+/* 294 */ ["Security","What happens if an Access Control evaluation fails for a record-level read operation in a list?",["The user sees 'Number of rows removed by Security Constraints' message","The entire table is wiped from the list","The user gets logged out immediately","The browser raises a JavaScript alert error"],"ServiceNow hides the restricted rows and informs the user that rows were removed by security constraints."],
+/* 295 */ ["Security","What role is specifically required to create, edit, or delete Access Control (ACL) records?",["security_admin (elevated)","admin","itil_admin","system_auditor"],"Editing ACLs requires elevating privileges to the security_admin role."],
+/* 296 */ ["Security","What does a table.* Access Control (ACL) rule govern?",["All fields on the table that do not have a specific table.field ACL","Only the sys_id column","Table creation and deletion only","Only reference fields on the table"],"table.* acts as the wild-card fallback rule for fields without their own specific column ACLs."],
+/* 297 */ ["Security","In what order does ServiceNow evaluate Access Controls for field-level access?",["Field-level ACL first, then Table-level ACL; both must pass","Table-level ACL first; Field ACLs are ignored if Table ACL passes","Wildcard rules first, then specific field rules","Alphabetical by field name"],"Field-level access requires passing both the field-level rule (specific or wildcard) AND the table-level rule."],
+/* 298 */ ["Security","What is High Security Settings in ServiceNow?",["A suite of default security settings including Default Deny for ACLs","A biometric login requirement","A physical server lock","An external firewall configuration"],"High Security Settings enforce strict defaults, such as requiring security_admin elevation and Default Deny."],
+/* 299 */ ["Security","What is the best practice for assigning roles to individual users?",["Assign roles to groups, and add users to those groups","Assign all roles directly to each user account","Assign admin to every fulfiller","Hardcode usernames into ACL scripts"],"Assigning roles to groups standardizes permissions and simplifies onboarding and offboarding."],
+/* 300 */ ["Security","Which ACL operation controls whether a user can see a record in a list or form?",["read","view","select","query"],"The 'read' operation governs access to view and read data in records and fields."],
+/* 301 */ ["Security","Which ACL operation controls whether a user can save changes to an existing record?",["write","update","commit","modify"],"The 'write' ACL operation governs permissions to edit and save changes to fields."],
+/* 302 */ ["Security","Which ACL operation controls whether a user can create a brand-new record in a table?",["create","insert","new","add"],"The 'create' ACL operation governs whether a user can insert a new record into a table."],
+/* 303 */ ["Automation","Which Client Script parameter prevents an onChange script from running when the form initially loads?",["isLoading","newValue","oldValue","control"],"if (isLoading) { return; } prevents onChange scripts from executing during form load."],
+/* 304 */ ["Automation","How can an onSubmit Client Script cancel a form submission?",["Return false","Return true","Call g_form.close()","Call current.abort()"],"Returning false inside an onSubmit function stops the form submission."],
+/* 305 */ ["Automation","What does the client-side method g_form.setMandatory('field_name', true) do?",["Makes the specified field required before the form can be submitted","Hides the field from the screen","Makes the field read-only","Changes the field type to string"],"setMandatory makes the field required before saving."],
+/* 306 */ ["Automation","What does the client-side method g_form.setDisplay('field_name', false) do?",["Hides the field and removes its space completely from the form layout","Hides the field while retaining blank space","Clears the value of the field","Sets the field to read-only"],"setDisplay(false) hides the control and label without preserving space."],
+/* 307 */ ["Automation","Why are UI Policies generally preferred over Client Scripts for managing field visibility?",["UI Policies require no code and are easier to maintain during upgrades","UI Policies run on the server exclusively","UI Policies can query external databases","UI Policies run before the server boots"],"UI Policies offer declarative, no-code configuration that is easier to maintain and upgrade."],
+/* 308 */ ["Automation","What happens if you run current.update() inside a Before Business Rule?",["It can cause an infinite loop and severe performance degradation","It saves the record twice cleanly","It aborts the current transaction immediately","It converts the rule to an Async rule"],"Before rules write changes to current without calling current.update(); calling it risks recursion loops."],
+/* 309 */ ["Automation","In Flow Designer, what are the three main types of Triggers?",["Record-based, Schedule-based, and Application-based","List, Form, and Report","Client, Server, and Mid Server","Insert, Delete, and Query"],"Flows can trigger on Record operations (Created/Updated), Schedules (Daily/Weekly), or Application events/REST."],
+/* 310 */ ["Automation","What is a Flow Designer Action?",["A reusable operation that automates platform features without code","A button on a form","A database table trigger","A client-side alert box"],"Actions are discrete building blocks (e.g., Ask for Approval, Create Record, Send Email) within a Flow."],
+/* 311 */ ["Automation","What server-side method fires an event into the ServiceNow event queue?",["gs.eventQueue('event.name', current, parm1, parm2)","current.fireEvent('event.name')","g_form.sendEvent('event.name')","gs.trigger('event.name')"],"gs.eventQueue queues an event with optional parameters, processed by background workers."],
+/* 312 */ ["Automation","Which table stores the queued platform events awaiting processing?",["sysevent","sys_attachment","sys_log","sys_flow_context"],"The sysevent table queues all triggered events until background event workers pick them up."],
+/* 313 */ ["Data","What is the correct sequence of steps to import data into ServiceNow using Import Sets?",["Load Data > Create/Review Transform Map > Run Transform","Run Transform > Load Data > Create Table","Create Transform Map > Commit Update Set > Run Script","Export XML > Run Transform > Load Staging"],"The standard process is: Load Data into staging table, create/verify Transform Map, and execute Transform."],
+/* 314 */ ["Data","What happens during an import if no Coalesce field is specified in the Transform Map?",["All incoming records are inserted as new records","The import fails with an error","All existing records are overwritten","Only the first row is imported"],"Without a coalesce field, ServiceNow treats every record in the import staging table as a new insert."],
+/* 315 */ ["Data","What is a Multi-Field Coalesce in a Transform Map?",["Using two or more fields together to uniquely identify an existing record","Coalescing on multiple instances simultaneously","Importing multiple spreadsheets at once","Merging two tables into one"],"Multi-field coalesce checks all designated coalesce columns together to determine an exact match."],
+/* 316 */ ["Data","What type of Transform Script runs before an Import Set transforms the very first record?",["onStart","onBefore","onAfter","onComplete"],"onStart runs once at the beginning of the transformation before any rows are processed."],
+/* 317 */ ["Data","What type of Transform Script runs for each row before inserting or updating data in the target table?",["onBefore","onStart","onComplete","onReject"],"onBefore runs for each individual record before it is transformed into the target record."],
+/* 318 */ ["Data","Which of the following items is captured by an Update Set?",["Business Rules, Client Scripts, and Form Layouts","Incident records and problem tickets","User and group memberships","Incoming email logs"],"Update Sets capture configuration changes (metadata), not transactional application data."],
+/* 319 */ ["Data","Which of the following data types is NOT captured in an Update Set by default?",["User records (sys_user) and task tickets","UI Actions","Workflows and Flows","Access Control Lists (ACLs)"],"Data records like users, groups, tasks, and CIs are not tracked by update sets."],
+/* 320 */ ["Data","How should an administrator safely move transactional records (data) from one instance to another?",["Export to XML / Import XML (or use Data Sources / Import Sets)","Include them in an Update Set","Clone the entire database in reverse","Copy and paste via the browser"],"Exporting to XML and importing XML preserves sys_ids and is the standard way to migrate data records."],
+/* 321 */ ["Data","What is a collision or conflict in an Update Set preview?",["A change in the update set conflicts with a more recent local change on the target instance","A network failure between the two instances","A missing user password","An unapproved software license"],"A collision occurs when the object being committed was modified more recently on the target instance."],
+/* 322 */ ["Catalog","What controls who can view and order a Service Catalog item?",["User Criteria (Not Available / Available For related lists)","Client Scripts on the form","Table Access Control Lists (ACLs)","Business Rules on sc_task"],"User Criteria define rules (based on location, department, role, or group) to grant catalog access."],
+/* 323 */ ["Catalog","What happens if a user matches both 'Available For' and 'Not Available' User Criteria on a catalog item?",["'Not Available' always overrides 'Available For'","'Available For' always wins","The user is prompted for an admin password","A random access decision is made"],"ServiceNow enforces a strict deny override: 'Not Available' criteria always take precedence."],
+/* 324 */ ["Catalog","In the Service Catalog fulfillment hierarchy, what does the Request (REQ) record represent?",["The overall order container or shopping cart header","A specific hardware device fulfilled by IT","An approval sent to a single manager","A task assigned to a technician"],"The Request (REQ) is the parent container representing the overall order checkout."],
+/* 325 */ ["Catalog","In the Service Catalog hierarchy, what is a Requested Item (RITM)?",["A specific line-item product or service within the parent Request","The task assigned to a technician","The shopping cart before checkout","The catalog item definition in sys_category"],"Each item ordered inside a request generates a separate Requested Item (RITM) record."],
+/* 326 */ ["Catalog","Which record in the Catalog hierarchy is assigned to a fulfillment team member to perform work?",["Catalog Task (SCTASK)","Request (REQ)","Requested Item (RITM)","Service Catalog (sys_catalog)"],"Catalog Tasks (sc_task) represent the specific units of work assigned to fulfillment groups."],
+/* 327 */ ["ITSM","In Incident Management, how is Priority calculated by default?",["Automatically determined from Impact and Urgency via the Priority Lookup table","Manually assigned by the Service Desk agent","Calculated from the caller's VIP status only","Based strictly on the Category and Subcategory"],"The Priority Data Lookup table computes Priority from the combination of Impact and Urgency."],
+/* 328 */ ["ITSM","What does 'Impact' signify on an Incident form?",["The measure of the business criticality or extent of disruption caused by the issue","The speed at which the issue must be resolved","The number of technicians required to fix the bug","The monetary cost of replacing hardware"],"Impact measures the extent of business impairment (e.g., enterprise-wide vs. single user).."],
+/* 329 */ ["ITSM","What does 'Urgency' signify on an Incident form?",["The necessary speed at which the issue requires resolution based on business need","The number of callers affected","The server room temperature","The age of the assigned technician"],"Urgency reflects how rapidly an issue must be addressed to prevent damage to the business."],
+/* 330 */ ["ITSM","What happens to child incidents when a parent incident is resolved?",["Child incidents can be automatically resolved with the same resolution notes","Child incidents are permanently deleted","Child incidents are escalated to Priority 1","Child incidents are reassigned to the caller"],"When configured, resolving a parent incident cascades resolution details to all linked child incidents."],
+/* 331 */ ["ITSM","What is the purpose of Incident Autoclosure in ServiceNow?",["Automatically moves incidents from Resolved to Closed after a specified number of days","Deletes resolved incidents after 30 days","Escalates unresolved incidents to problems","Closes duplicate incidents immediately"],"The system property (glide.ui.autoclose.time) automatically closes resolved tickets after a set duration."],
+/* 332 */ ["ITSM","What is a Known Error in Problem Management?",["A problem that has an identified root cause and an established workaround","An incident that cannot be resolved","A software bug with no solution","An unplanned outage during a change window"],"A Known Error is a problem with an identified root cause and an available workaround."],
+/* 333 */ ["ITSM","Which change type requires formal approval by the Change Advisory Board (CAB)?",["Normal Change","Standard Change","Emergency Change only","Automated Service Change"],"Normal Changes entail risk and require formal assessment and CAB approval before implementation."],
+/* 334 */ ["ITSM","What is the Change Schedule in ServiceNow?",["A visual calendar of planned, approved, and active changes to identify clashes","A list of technicians on call","A database backup schedule","A script that runs changes automatically"],"The Change Schedule displays scheduled change windows on a timeline to prevent conflicting implementations."],
+/* 335 */ ["CMDB","What is the primary difference between a Configuration Item (CI) and an Asset?",["A CI tracks operational attributes and relationships; an Asset tracks financial and contractual details","A CI is physical hardware; an Asset is software only","CIs are stored in sys_user; Assets are stored in cmdb","There is no difference; they are identical records"],"CIs focus on operational dependencies in IT services; Assets manage life-cycle, procurement, and depreciation."],
+/* 336 */ ["CMDB","Which table stores the relationships between Configuration Items?",["cmdb_rel_ci","cmdb_ci","sys_relationship","cmdb_dependency"],"cmdb_rel_ci stores parent-child associations and relationship types between CIs."],
+/* 337 */ ["CMDB","What are the three Key Performance Indicators (KPIs) evaluated in the CMDB Health Dashboard?",["Completeness, Correctness, and Compliance","Cost, Weight, and Power","Speed, Latency, and Bandwidth","Users, Groups, and Roles"],"CMDB Health measures Completeness (required fields), Correctness (duplicates/orphans), and Compliance (audit tests)."],
+/* 338 */ ["CMDB","What is the Identification and Reconciliation Engine (IRE)?",["A centralized framework that prevents duplicate CIs during imports and Discovery","A payment gateway for ServiceNow Store apps","A tool to match user passwords","A script that deletes retired hardware"],"The IRE ensures consistent identification rules and prevents duplicate records when multiple data sources feed the CMDB."],
+/* 339 */ ["Reporting","What are the four primary tabs in the ServiceNow Report Designer?",["Data, Type, Configure, and Style","Select, Edit, Save, and Share","Table, Columns, Filter, and Export","Query, Graph, Canvas, and Publish"],"Report Designer guides you through Data (source), Type (visualization), Configure (groupings), and Style (colors/legend)."],
+/* 340 */ ["Reporting","What is the difference between Sharing a report and Publishing a report?",["Sharing restricts access to specific users/roles; Publishing generates a public URL","Publishing emails the report; Sharing displays it on a dashboard","Sharing makes it visible to all internet users; Publishing is for admins","There is no difference between them"],"Sharing controls internal access; Publishing creates a public link accessible without ServiceNow login."],
+/* 341 */ ["Reporting","What is an Interactive Filter on a ServiceNow Dashboard?",["A dashboard widget that allows users to filter multiple reports on that dashboard dynamically","A search bar on a public website","A voice-activated command tool","An interactive video player"],"Interactive Filters dynamically update all linked dashboard reports when a user changes filter parameters."],
+/* 342 */ ["SLA","What does Service Level Agreement (SLA) measure in ServiceNow?",["The time taken to acknowledge, respond to, or resolve a task against contracted targets","The number of lines of code written","The memory usage of the database","The battery life of employee laptops"],"SLAs track elapsed time against target commitments (such as Response Time and Resolution Time)."],
+/* 343 */ ["SLA","What are the three conditions evaluated on an SLA Definition?",["Start condition, Pause condition, and Stop condition","Input, Process, and Output","Before, After, and Async","Load, Save, and Delete"],"SLA Definitions require a Start condition, an optional Pause condition, and a Stop condition."],
+/* 344 */ ["SLA","Which table stores active Task SLA records?",["task_sla","sla_definition","contract_sla","sys_sla"],"task_sla tracks the specific running SLA timers associated with individual tasks."],
+/* 345 */ ["SLA","What does the 'Retroactive Start' option in an SLA definition do?",["Sets the start time of the SLA to a date/time from a field (like created) rather than now","Restarts the SLA from zero whenever paused","Calculates SLAs backwards into the previous month","Cancels breached SLAs automatically"],"Retroactive Start sets the timer's start anchor to an earlier timestamp, such as task creation."],
+/* 346 */ ["Notifications","How do you reference a field from the triggering record inside an email notification body?",["${field_name} (e.g., ${short_description})","#{field_name}","[field_name]","&field_name;"],"Enclosing the field name in ${} injects dynamic record values into the notification body."],
+/* 347 */ ["Notifications","What is an Email Watermark in ServiceNow?",["A unique identifier inserted in outgoing emails to match replies back to the exact record","A graphic logo in the footer","A copyright stamp","A digital signature preventing spam"],"Watermarks (e.g., Ref:MSG0001001) allow the email engine to tie customer replies to the correct record."],
+/* 348 */ ["Platform","What is a 'Skipped Change' during a ServiceNow platform upgrade?",["A customer-customized record that the upgrade engine left untouched to protect modifications","An update that failed due to lack of disk space","A plugin that was intentionally deleted","A database error that crashed the upgrade"],"Upgrades do not overwrite customized out-of-the-box records; they are flagged as 'skipped' for review."],
+/* 349 */ ["Automation","What is the order of execution between UI Policies and Client Scripts on form load?",["Client Scripts execute first, followed by UI Policies","UI Policies execute first, followed by Client Scripts","They run simultaneously in parallel threads","Only whichever was created first executes"],"Client Scripts run first upon form load; UI Policies execute afterward and take precedence."],
+/* 350 */ ["Platform","What is the ServiceNow Community?",["An online public portal where ServiceNow users, admins, and developers collaborate and share solutions","A private chat group for ServiceNow executives","A mandatory training class for administrators","An internal ServiceNow database table"],"The ServiceNow Community is an open platform where developers and administrators exchange knowledge and best practices."]
+];
+
+let bank = Q.slice(), sel = new Set(), cur = [], i = 0, sc = 0, miss = [];
+const $ = id => document.getElementById(id);
+
+const sh = a => {
+  a = a.slice();
+  for (let k = a.length - 1; k > 0; k--) {
+    const j = Math.floor(Math.random() * (k + 1));
+    [a[k], a[j]] = [a[j], a[k]];
+  }
+  return a;
+};
+
+function updateStats() {
+  $("total-stat").textContent = bank.length;
+  const avail = bank.filter(q => sel.has(q[0])).length;
+  $("sel-stat").textContent = avail;
+  $("go-all").textContent = `🚀 Start Full Quiz (All ${avail} Questions)`;
+  $("go-all").disabled = avail === 0;
+  $("go-custom").disabled = avail === 0;
+}
+
+function chips() {
+  const t = [...new Set(bank.map(q => q[0]))].sort();
+  if
